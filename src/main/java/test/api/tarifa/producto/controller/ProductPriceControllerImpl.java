@@ -4,7 +4,6 @@ import static test.api.tarifa.producto.constant.ConstantProductApi.API_BASE_PATH
 import static test.api.tarifa.producto.constant.ConstantProductApi.FORMAT_DATE;
 
 import java.util.Date;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ import test.api.tarifa.producto.service.TarifaProductService;
 @RestController
 @Validated
 @RequestMapping(value = API_BASE_PATH)
-public class ProductPriceControllerImpl implements ProductPriceController{
+public class ProductPriceControllerImpl implements ProductPriceController {
 
   private final TarifaProductService service;
 
@@ -33,7 +32,7 @@ public class ProductPriceControllerImpl implements ProductPriceController{
   public ResponseEntity<ResponseDTO> getProductPriceByFilters(
       @PathVariable(name = "product_id") @NotBlank String productId,
       @PathVariable(name = "brand_id") @NotBlank String brandId,
-      @RequestParam(value="date") @DateTimeFormat(pattern=FORMAT_DATE) @Valid Date date) {
-    return service.calcTarifaProducts(productId,brandId,date);
+      @RequestParam(value = "date") @DateTimeFormat(pattern = FORMAT_DATE) @NotBlank Date date) {
+    return service.calcTarifaProducts(productId, brandId, date);
   }
 }

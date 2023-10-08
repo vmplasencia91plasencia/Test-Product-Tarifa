@@ -10,11 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
-@Entity
-@Table(name="PRICES")
 @Data
+@Builder
+@AllArgsConstructor
+@Entity
+@Table(name = "PRICES")
 public class PriceEntity {
 
   @Id
@@ -37,11 +41,14 @@ public class PriceEntity {
   @Column(name = "PRIORITY")
   private Integer priority;
 
-  @Column(name = "PRICE",nullable = false)
+  @Column(name = "PRICE", nullable = false)
   private BigDecimal price;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "CURR")
   private Currency currency;
+
+  public PriceEntity() {
+  }
 
 }

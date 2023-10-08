@@ -18,7 +18,7 @@ import test.api.tarifa.producto.repository.TarifaRepository;
 
 @Service
 @Slf4j
-public class TarifaProductServiceImpl implements TarifaProductService{
+public class TarifaProductServiceImpl implements TarifaProductService {
 
   private final TarifaRepository repository;
   private final PriceMapper mapper;

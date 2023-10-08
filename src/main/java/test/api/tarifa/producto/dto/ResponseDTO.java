@@ -1,37 +1,57 @@
 package test.api.tarifa.producto.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
-import java.math.BigDecimal;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import test.api.tarifa.producto.entity.Currency;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Data
+@Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @ApiModel(value = "Response OK", description = "Response when request is OK and has data")
 public class ResponseDTO {
 
+  @ApiModelProperty(
+      value = "Apply tariff",
+      example = "1")
   @JsonProperty("tarifa_id")
   private Long priceList;
+
+  @ApiModelProperty(
+      value = "Brand identifier",
+      example = "1(ZARA)")
   @JsonProperty("cadena_id")
   private String brandId;
-  private String startDate;
-  private String endDate;
-  private String productId;
-  @JsonProperty("price")
-  private String currentPrice;
-  @JsonIgnore
-  private BigDecimal price;
-  @JsonIgnore
-  private Currency currency;
 
-  public String getCurrentPrice() {
-    if(price!=null){
-      return price.toString().concat(" "+currency.name());
-    }
-    return null;
-  }
+  @ApiModelProperty(
+      value = "Initial range for apply tariff",
+      example = " 2020-06-14-00:00:00")
+  @JsonProperty("start_date")
+  private String startDate;
+
+  @ApiModelProperty(
+      value = "End range for apply tariff",
+      example = " 2020-06-22-00:00:00")
+  @JsonProperty("end_date")
+  private String endDate;
+
+  @ApiModelProperty(
+      value = "Product identifier",
+      example = " 2020-06-22-00:00:00")
+  @JsonProperty("product_id")
+  private String productId;
+
+  @ApiModelProperty(
+      value = "Product price",
+      example = "22.50 EUR")
+  @JsonProperty("price")
+  private String price;
+
 
 }

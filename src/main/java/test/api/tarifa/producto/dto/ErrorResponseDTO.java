@@ -3,11 +3,17 @@ package test.api.tarifa.producto.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Data
+@Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @ApiModel(value = "Response error", description = "Response when error")
 public class ErrorResponseDTO {
 

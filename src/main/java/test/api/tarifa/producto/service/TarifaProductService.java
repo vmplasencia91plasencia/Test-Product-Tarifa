@@ -6,6 +6,6 @@ import test.api.tarifa.producto.dto.ResponseDTO;
 
 public interface TarifaProductService {
 
-  ResponseEntity<ResponseDTO> calcTarifaProducts(String productId,String brandId, Date date);
+  ResponseEntity<ResponseDTO> calcTarifaProducts(String productId, String brandId, Date date);
 
 }
