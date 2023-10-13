@@ -8,9 +8,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Optional;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,10 +49,10 @@ class TarifaDboTransactionalTest {
       PriceEntity entity = JsonUtil.stubFromJson("./mapper/price_mapper_2.json", new TypeReference<>() {
       });
       Mockito.when(tarifaRepository.findTarifaByDateAndProductAndBrand(any(), any(), any()))
-          .thenReturn(Optional.of(entity));
+          .thenReturn(List.of(entity));
       Mockito.when(mapper.toDomain(any())).thenReturn(Price.builder().build());
-      Price output = transactional.getPriceApplyByDateAndProductIdAndBrandId(new GregorianCalendar(2020,
-          Calendar.JULY, 14).getTime(), "45", "33");
+      Price output = transactional.getPriceApplyByDateAndProductIdAndBrandId(LocalDateTime.of(2020,
+          Calendar.JULY, 14, 0, 0), "45", "33");
       verify(tarifaRepository, times(1)).findTarifaByDateAndProductAndBrand(any(), any(), any());
       verify(mapper, times(1)).toDomain(any());
       assertNotNull(output);
@@ -63,9 +63,9 @@ class TarifaDboTransactionalTest {
   void test_getPriceApplyWithMapperThrowException() {
     assertThrows(NotResultException.class, () -> {
       Mockito.when(tarifaRepository.findTarifaByDateAndProductAndBrand(any(), any(), any()))
-          .thenReturn(Optional.empty());
-      transactional.getPriceApplyByDateAndProductIdAndBrandId(new GregorianCalendar(2020,
-          Calendar.JULY, 14).getTime(), "45", "33");
+          .thenReturn(List.of());
+      transactional.getPriceApplyByDateAndProductIdAndBrandId(LocalDateTime.of(2020,
+          Calendar.JULY, 14, 0, 0), "45", "33");
       verify(transactional, times(1)).getPriceApplyByDateAndProductIdAndBrandId(any(), any(), any());
       verify(mapper, times(0)).toDomain(any());
     });

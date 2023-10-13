@@ -1,6 +1,6 @@
 package test.api.tarifa.producto.infraestructure.adapter.repository;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import test.api.tarifa.producto.application.repository.TarifaTransactional;
@@ -22,8 +22,9 @@ public class TarifaDboTransactional implements TarifaTransactional {
   }
 
   @Override
-  public Price getPriceApplyByDateAndProductIdAndBrandId(Date date, String productId, String brandId) {
+  public Price getPriceApplyByDateAndProductIdAndBrandId(LocalDateTime date, String productId, String brandId) {
     return repository.findTarifaByDateAndProductAndBrand(date, productId, brandId)
+        .stream().findFirst()
         .map(priceMapper::toDomain)
         .orElseThrow(() -> new NotResultException(CommonError.NOT_EXIST_RESULT));
   }

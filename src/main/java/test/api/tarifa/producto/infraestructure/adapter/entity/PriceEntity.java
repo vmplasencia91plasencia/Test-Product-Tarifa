@@ -1,7 +1,11 @@
 package test.api.tarifa.producto.infraestructure.adapter.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -31,10 +35,14 @@ public class PriceEntity {
   private String brandId;
 
   @Column(name = "START_DATE", nullable = false)
-  private Date startDate;
+  @JsonSerialize(using = LocalDateTimeSerializer.class)
+  @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+  private LocalDateTime startDate;
 
   @Column(name = "END_DATE", nullable = false)
-  private Date endDate;
+  @JsonSerialize(using = LocalDateTimeSerializer.class)
+  @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+  private LocalDateTime endDate;
 
   @Column(name = "PRODUCT_ID", nullable = false, length = 36)
   private String productId;

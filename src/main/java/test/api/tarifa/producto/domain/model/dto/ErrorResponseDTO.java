@@ -2,7 +2,6 @@ package test.api.tarifa.producto.domain.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +19,7 @@ public class ErrorResponseDTO {
   @ApiModelProperty(
       value = "Executed time request",
       example = "1696697669756")
-  private Date timestamp;
+  private String timestamp;
   @ApiModelProperty(
       value = "Http status code",
       example = "1696697669756")

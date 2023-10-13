@@ -1,13 +1,12 @@
 {
   "price_list": 1,
   "brand_id": "22",
-  "start_date": 1644015600000,
-  "end_date": 1393023600000,
+  "start_date": "2022-01-05T00:00",
+  "end_date": "2014-01-22T00:00",
   "product_id": "33",
   "priority": 10,
   "price": 100,
   "currency": "EUR"
 }
-
 
 

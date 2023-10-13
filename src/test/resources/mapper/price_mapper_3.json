@@ -1,7 +1,7 @@
 {
   "price_list": 1,
   "brand_id": "33",
-  "start_date": 1645743600000,
+  "start_date": "2022-01-25T00:00",
   "end_date": null,
   "product_id": "33",
   "priority": 50,

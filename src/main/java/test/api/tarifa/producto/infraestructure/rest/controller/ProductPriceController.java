@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import java.util.Date;
+import java.time.LocalDateTime;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +27,6 @@ public interface ProductPriceController {
   ResponseEntity<ResponseDTO> getProductPriceByFilters(@ApiParam(name = "productId", value = "35455", required =
       true) String productId,
       @ApiParam(name = "brandId", value = "Example: 1 (ZARA) ", required = true) String brandId,
-      @ApiParam(name = "date", value = " Example: 2020-06-14-10:00:00") Date date);
+      @ApiParam(name = "date", value = " Example: 2020-06-14-10:00:00") LocalDateTime date);
 
 }

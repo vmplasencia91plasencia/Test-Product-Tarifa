@@ -7,7 +7,7 @@ public class ConstantProductApi {
   public static final String API_TITLE = "test_price_product_v1";
   public static final String API_TAG = "Product price endpoints";
   public static final String API_DESCRIPTION = "API for tarifa and price products";
-  public static final String FORMAT_DATE = "yyy-MM-dd-HH:mm:ss";
+  public static final String FORMAT_DATE = "yyyy-MM-dd-HH:mm:ss";
 
   private ConstantProductApi() {
     throw new UnsupportedOperationException();
